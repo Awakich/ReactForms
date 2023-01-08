@@ -1,22 +1,49 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const Forms = () => {
-  const { register, handleSubmit } = useForm();
-  const [data, setData] = useState([]);
+  const { register, handleSubmit, reset } = useForm({});
+  const [data, setData] = useState("");
 
   const onSubmit = (datas) => {
-    setData(datas);
+    setData(JSON.stringify(datas));
     console.log(data);
+    reset();
   };
 
   return (
-    <div>Forms</div>
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    //   <input {...register("FirstName")} />
-    //   <input {...register("LastName")} />
-    //   <input type="submit" />
-    // </form>
+    <div className="px-12 flex flex-col items-center justify-center gap-12">
+      <h2 className="text-[#30519F] font-bold text-5xl">Contact with us</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-12">
+        <input
+          className="bg-gray-200 rounded-md py-3 pl-3"
+          {...register("FirstName", { required: true, maxLength: 20 })}
+          type="text"
+          placeholder="First Name"
+        />
+        <input
+          className="py-3 bg-gray-200 rounded-md pl-3"
+          {...register("LastName", { required: true, maxLengt: 20 })}
+          type="text"
+          placeholder="Last Name"
+        />
+        <input
+          className="py-3 bg-gray-200 rounded-md pl-3"
+          {...register("Email", { required: true })}
+          type="email"
+          placeholder="Email"
+        />
+        <input
+          className="bg-[#30519F] text-white rounded-full px-36 py-4 font-semibold text-3xl hover:bg-[#30519F]/90 hover:cursor-pointer"
+          type="submit"
+        />
+        {data && (
+          <div className="font-bold text-2xl text-center">
+            Thank you for your attention!
+          </div>
+        )}
+      </form>
+    </div>
   );
 };
 

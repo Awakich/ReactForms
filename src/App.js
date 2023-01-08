@@ -7,8 +7,15 @@ function App() {
   return (
     <div className="">
       <Header />
-      <Features />
-      <Forms />
+
+      <div id="features">
+        <Features />
+      </div>
+
+      <div id="contacts">
+        <Forms />
+      </div>
+
       <Footer />
     </div>
   );
