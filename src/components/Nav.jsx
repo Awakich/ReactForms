@@ -1,5 +1,19 @@
 import Logo from "../assets/Logo.svg";
 import Button from "../components/Button";
+import { toast } from "react-toastify";
+
+const InfoNotifications = () => {
+   toast.info("Registration", {
+     position: "top-right",
+     autoClose: 1000,
+     hideProgressBar: true,
+     closeOnClick: true,
+     pauseOnHover: true,
+     draggable: false,
+     progress: undefined,
+     theme: "colored",
+   });
+  };
 
 const Nav = () => {
   return (
@@ -8,7 +22,7 @@ const Nav = () => {
         <img src={Logo} alt="" />
       </div>
 
-      <Button>Get Started</Button>
+      <Button InfoFunction={InfoNotifications}>Get Started</Button>
     </nav>
   );
 };

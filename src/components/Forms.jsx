@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Forms = () => {
   const { register, handleSubmit, reset } = useForm({});
@@ -9,6 +10,19 @@ const Forms = () => {
     setData(JSON.stringify(datas));
     console.log(data);
     reset();
+  };
+
+  const Notifications = () => {
+    toast.success("Thanks for your contact", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "colored",
+    })
   };
 
   return (
@@ -33,10 +47,13 @@ const Forms = () => {
           type="email"
           placeholder="Email"
         />
-        <input
+        <button
           className="bg-[#30519F] text-white rounded-full px-36 py-4 font-semibold text-3xl hover:bg-[#30519F]/90 hover:cursor-pointer"
           type="submit"
-        />
+          onClick={Notifications}
+        >
+          Send request
+        </button>
         {data && (
           <div className="font-bold text-2xl text-center">
             Thank you for your attention!

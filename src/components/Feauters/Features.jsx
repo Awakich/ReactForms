@@ -1,19 +1,5 @@
-import { useState, useEffect } from "react";
 import Feauter from "../Feauters/Feauter";
-
-const Features = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const FetchData = async () => {
-      const res = await fetch(
-        "https://dummyjson.com/users?skip=0&limit=8"
-      ).then((res) => res.json());
-      setUsers(res.users);
-    };
-    FetchData();
-  }, []);
-
+const Features = ({ users }) => {
   // id, firstName, lastName, age, email, image
 
   return (
